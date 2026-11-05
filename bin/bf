@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Entry point for bash (Linux, macOS, Git Bash). The interpreter itself is bf_interpreter.js.
+
+BIN_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+if ! command -v node >/dev/null 2>&1; then
+    echo "bf: Node.js não encontrado. Instale em https://nodejs.org e tente de novo." >&2
+    exit 127
+fi
+
+exec node "$BIN_DIR/../bf_interpreter.js" "$@"
